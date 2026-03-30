@@ -1,0 +1,23 @@
+.btn-primary {
+    -fx-background-color: #6750A4;
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-padding: 10 18;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+}
+.btn-primary:hover {
+    -fx-background-color: #5b4697;
+}
+
+.btn-tonal {
+    -fx-background-color: #E8DEF8;
+    -fx-text-fill: #1D192B;
+    -fx-font-weight: 600;
+    -fx-padding: 10 18;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+}
+.btn-tonal:hover {
+    -fx-background-color: #ddd2f0;
+}

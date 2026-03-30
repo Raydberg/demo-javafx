@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.auth;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,7 +22,7 @@ public class LoginController {
 
     public void login(ActionEvent event) throws IOException {
         String username = nameTextField.getText();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/auth/hello-view.fxml"));
         root = loader.load();
 
         HelloController controller = loader.getController();

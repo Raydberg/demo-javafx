@@ -1,29 +1,27 @@
 package com.example.demo;
 
+import io.github.palexdev.materialfx.theming.JavaFXThemes;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
+    public void start(Stage stage) throws Exception {
+        UserAgentBuilder.builder()
+                .themes(JavaFXThemes.MODENA)
+                .themes(MaterialFXStylesheets.forAssemble(true))
+                .build()
+                .setGlobal();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/views/launcher-view.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/css/material.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-//        stage.setTitle("Hello!");
-//        stage.setFullScreen(true);
-
-//        Image icon = new Image("icon.png");
-//        stage.getIcons().add(icon);
-//        stage.setScene(scene);
-//        stage.show();
-
     }
 }

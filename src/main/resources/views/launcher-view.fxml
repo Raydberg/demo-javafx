@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<AnchorPane
+        maxHeight="-Infinity"
+        maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        prefHeight="400.0"
+        prefWidth="600.0"
+        xmlns="http://javafx.com/javafx/17.0.12"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.example.demo.LauncherController">
+    <children>
+
+        <MFXButton
+                layoutX="48.0"
+                layoutY="35.0"
+                styleClass="btn-primary"
+                onAction="#swtichToLogin"
+                text="Login"/>
+
+        <MFXButton
+                layoutX="131.0"
+                layoutY="35.0"
+                styleClass="btn-tonal"
+                onAction="#swtichToSwitchPage"
+                text="Switch View"/>
+
+    </children>
+</AnchorPane>
