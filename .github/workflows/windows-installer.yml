@@ -42,6 +42,35 @@ jobs:
         run: |
           jpackage --type exe --name DemoApp --app-version 1.0.0 --dest dist --module-path "target/demo-1.0-SNAPSHOT.jar;target/libs" --module com.example.demo/com.example.demo.Launcher --win-shortcut --win-menu
 
+      - name: Restore signing certificate
+        if: ${{ secrets.WINDOWS_CERT_PFX_BASE64 != '' && secrets.WINDOWS_CERT_PASSWORD != '' }}
+        shell: pwsh
+        run: |
+          [IO.File]::WriteAllBytes("$env:RUNNER_TEMP\codesign.pfx", [Convert]::FromBase64String("${{ secrets.WINDOWS_CERT_PFX_BASE64 }}"))
+
+      - name: Find SignTool
+        if: ${{ secrets.WINDOWS_CERT_PFX_BASE64 != '' && secrets.WINDOWS_CERT_PASSWORD != '' }}
+        id: signtool
+        shell: pwsh
+        run: |
+          $tool = Get-ChildItem "C:\Program Files (x86)\Windows Kits","C:\Program Files\Microsoft Visual Studio" -Filter signtool.exe -File -Recurse -ErrorAction SilentlyContinue |
+            Sort-Object FullName -Descending |
+            Select-Object -First 1
+          if (-not $tool) { throw "No se encontro signtool.exe" }
+          "path=$($tool.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Sign installer
+        if: ${{ secrets.WINDOWS_CERT_PFX_BASE64 != '' && secrets.WINDOWS_CERT_PASSWORD != '' }}
+        shell: pwsh
+        run: |
+          & "${{ steps.signtool.outputs.path }}" sign /f "$env:RUNNER_TEMP\codesign.pfx" /p "${{ secrets.WINDOWS_CERT_PASSWORD }}" /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /v dist\DemoApp-1.0.0.exe
+
+      - name: Verify signature
+        if: ${{ secrets.WINDOWS_CERT_PFX_BASE64 != '' && secrets.WINDOWS_CERT_PASSWORD != '' }}
+        shell: pwsh
+        run: |
+          & "${{ steps.signtool.outputs.path }}" verify /pa /v dist\DemoApp-1.0.0.exe
+
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
         with:
