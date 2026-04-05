@@ -23,6 +23,12 @@
                 styleClass="btn-primary"
                 onAction="#swtichToLogin"
                 text="Login"/>
+        <MFXButton
+                layoutX="48.0"
+                layoutY="35.0"
+                styleClass="btn-primary"
+                onAction="#swtichToLogin"
+                text="Login"/>
 
         <MFXButton
                 layoutX="131.0"

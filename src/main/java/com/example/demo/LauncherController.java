@@ -15,7 +15,6 @@ public class LauncherController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private Double age;
 
     public void swtichToLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/views/auth/login-view.fxml"));
