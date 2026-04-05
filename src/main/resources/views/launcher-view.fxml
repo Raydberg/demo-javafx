@@ -36,6 +36,12 @@
                 styleClass="btn-tonal"
                 onAction="#swtichToSwitchPage"
                 text="Switch View"/>
+        <MFXButton
+                layoutX="131.0"
+                layoutY="35.0"
+                styleClass="btn-tonal"
+                onAction="#swtichToSwitchPage"
+                text="Switch View"/>
 
         <MFXButton
                 layoutX="131.0"
