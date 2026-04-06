@@ -1,0 +1,11 @@
+.btn-primary {
+    -fx-background-color: #3eea00 !important;
+    -fx-text-fill: black !important;
+    -fx-font-size: 14px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8;
+}
+
+.root {
+    -fx-background-color: #f0f0f0;
+}
