@@ -21,6 +21,8 @@ public class HelloApplication extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/views/launcher-view.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/css/material.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/css/material.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/css/app.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
